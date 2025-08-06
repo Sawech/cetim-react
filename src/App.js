@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import CheckDatabase from './pages/config/databasechek';
 import LoginPage from './pages/commun/LoginPage';
 import DatabaseForm from './pages/config/databaseconnection';
