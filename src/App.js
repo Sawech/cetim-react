@@ -42,7 +42,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<CheckDatabase />} />
+        {/* Redirect root to /login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/database-setup" element={<DatabaseForm />} />
         <Route path="/Directeur-dashboard" element={<ProtectedRoute user={user}><DirecteurDashboard /></ProtectedRoute>} />
