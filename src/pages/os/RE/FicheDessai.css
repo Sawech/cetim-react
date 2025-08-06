@@ -1,0 +1,276 @@
+
+.fiche-dessai-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  justify-content: center; 
+  width: 100%; 
+}
+
+.fiche-dessai-content {
+  width: 80%;
+  padding: 24px;
+  text-align: center;
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+
+
+.fiche-dessai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+}
+
+.fiche-dessai-header .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.fiche-dessai-header h2 {
+  color: #0d47a1;
+  margin: 0;
+  font-size: 24px;
+  text-align: left;
+  flex: 1;
+}
+
+
+.download-button {
+  background-color: #0d47a1;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.options-container {
+  margin-left: 20%;
+}
+
+
+table.fichdessai {
+  width: 90%; /* Reduce from 100% */
+  margin: 24px auto; /* Change margin to auto for horizontal centering */
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+thead {
+  background-color: #0d47a1;
+  color: white;
+}
+
+th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #424242;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Report details section */
+.report-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.detail-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.detail-item h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #0d47a1;
+  font-size: 16px;
+}
+
+.detail-item p {
+  margin: 0;
+  color: #424242;
+}
+
+/* Signature section */
+.signature-section {
+  display: flex;
+  justify-content: flex-end;
+  margin: 24px 0;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.signature-section p {
+  font-weight: 500;
+  color: #424242;
+}
+
+/* Prestations section */
+.prestations-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.prestations-section h3 {
+  color: #0d47a1;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.departments {
+  display: flex;
+  gap: 24px;
+}
+
+.department {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.department span {
+  font-weight: 500;
+  color: #424242;
+}
+
+.status-indicator {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Error message */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+/* Tests container */
+.tests-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.test-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.test-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+  background-color: #f5f7fa;
+}
+
+.test-header:hover {
+  background-color: #e3f2fd;
+}
+
+.test-header h4 {
+  margin: 0;
+  color: #0d47a1;
+  font-size: 16px;
+}
+
+.test-content {
+  padding: 16px;
+  background-color: white;
+}
+
+.test-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.test-detail {
+  background-color: #f5f7fa;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.test-detail strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #424242;
+  font-size: 14px;
+}
+
+.test-detail span {
+  color: #0d47a1;
+  font-weight: 500;
+}
+
+/* Expand/collapse button */
+.expand-button {
+  background-color: transparent;
+  border: none;
+  color: #0d47a1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.expand-button svg {
+  margin-left: 8px;
+  transition: transform 0.3s;
+}
+
+.expand-button.expanded svg {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,70 @@
+.sidebar-container {
+  min-height: 100vh;
+  width: 300px;
+  background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-SousDirection: column;
+  align-items: center;
+}
+
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+}
+
+.sidebar-logo .logo-text {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white; /* CETIM in white */
+  letter-spacing: 4px;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-content {
+  width: 100%;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  color: rgba(255, 255, 255, 0.9); /* Menu items in white with slight transparency */
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.sidebar-menu li:hover {
+  color: #e91e63; /* Hover effect for menu items */
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 480px) {
+  .sidebar-container {
+      width: 100%;
+      padding: 1rem;
+  }
+
+  .sidebar-logo .logo-text {
+      font-size: 2rem;
+  }
+}

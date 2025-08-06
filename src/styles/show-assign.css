@@ -1,0 +1,193 @@
+/* CSS for the ShowAssign component */
+
+.show-assign-container {
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-container {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title-item p {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #0d47a1;
+}
+
+/* Sample Info Table Styles */
+.sample-info-table {
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sample-info-table table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+}
+
+.sample-info-table th, 
+.sample-info-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+}
+
+/* Test Card Styles */
+.test-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border: 1px solid #95cadb;
+  margin-bottom: 20px;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.side-table {
+  width: 30%;
+}
+
+.date-section {
+  width: 30%;
+  margin: 0 10px;
+}
+
+.date-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.date-table td {
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+/* General table cell styles */
+.table-item td,
+.table-item th {
+  min-width: 50px;
+  padding: 5px;
+}
+
+/* Side tables (left and right) */
+.side-table .table-item td,
+.side-table .table-item th {
+  min-width: 50px; /* Wider cells for side tables */
+}
+
+/* Main content tables */
+.main-content .table-item td,
+.main-content .table-item th {
+  min-width: 120px; /* Even wider cells for main content */
+}
+
+/* Image cells should not be editable */
+.table-item td[contenteditable="false"],
+.table-item th[contenteditable="false"] {
+  min-width: auto;
+}
+
+table{
+  width: auto;
+  overflow: auto;
+}
+.date-input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.main-content {
+  margin: 15px 0;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chargee-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Color Backgrounds */
+.yellow-bg {
+  background-color: #ffff00;
+  padding: 8px;
+  font-weight: bold;
+}
+
+/* Button Styles */
+.print-button {
+  background-color: #0096c7;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.print-button:hover {
+  background-color: #0077b6;
+}
+
+.operator-select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .top-row {
+    flex-SousDirection: column;
+  }
+  
+  .side-table, .date-section {
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  .sample-info-table th, 
+  .sample-info-table td {
+    padding: 6px;
+    font-size: 0.9rem;
+  }
+  
+  .chargee-section {
+    flex-SousDirection: column;
+    align-items: flex-start;
+  }
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sample-info-table th, 
+  .sample-info-table td {
+    padding: 6px;
+    font-size: 0.9rem;
+  }
+}

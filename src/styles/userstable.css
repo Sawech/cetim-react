@@ -1,0 +1,278 @@
+/* Users List specific styles */
+.users-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  margin-left: 20px;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.users-header h1 {
+  color: #0d47a1;
+  margin: 0;
+  font-size: 28px;
+}
+
+.add-user-btn {
+  display: flex;
+  align-items: center;
+  background-color: #0d47a1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.add-user-btn:hover {
+  background-color: #093880;
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* Search and filters */
+.users-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.search-input-users {
+  width: 30%;
+  padding: 12px;
+  border: 1px solid #dde2e6;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.search-input-users:focus {
+  outline: none;
+  border-color: #0d47a1;
+  box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.15);
+}
+
+/* Users table */
+.users-table-container {
+  overflow-x: auto;
+  margin-bottom: 25px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+
+.users-table th,
+.users-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.users-table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+  white-space: nowrap;
+}
+
+.users-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* User role badges */
+.role-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.role-badge.admin {
+  background-color: #cce5ff;
+  color: #0d47a1;
+}
+
+.role-badge.super-admin {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.role-badge.operateur {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.view-btn {
+  color: #0d47a1;
+}
+
+.edit-btn {
+  color: #ffffff;
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+
+.action-btn:hover {
+  background-color: #f1f3f5;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #495057;
+}
+
+.page-btn.active {
+  background-color: #0d47a1;
+  color: white;
+  border-color: #0d47a1;
+}
+
+.page-btn:hover:not(.active) {
+  background-color: #e9ecef;
+}
+
+.page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Empty state */
+.no-users {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.unread-row {
+  background-color: orange !important;
+}
+
+/* If you want to maintain the hover effect */
+.unread-row:hover {
+  background-color: darkorange !important;
+}
+
+.subtest-row{
+  background-color: rgb(66, 230, 175);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .users-header {
+    flex-Direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .users-controls {
+    flex-Direction: column;
+    gap: 15px;
+  }
+
+  .search-container {
+    margin-right: 0;
+  }
+}
+
+/* Options row styles */
+.options-row {
+  background-color: #f8f9fa;
+}
+
+.options-container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.option-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.profile-btn {
+  background-color: #0d47a1;
+  color: white;
+}
+
+.tasks-btn {
+  background-color: #0d47a1;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.option-btn:hover {
+  opacity: 0.9;
+}

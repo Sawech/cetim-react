@@ -1,0 +1,108 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-content {
+
+  background: #fff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-color: #ffffff; /* Ensure this is solid white */
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  width: 90%;
+  /* Add these to ensure solid background */
+  opacity: 1 !important;
+  border: 1px solid #e0e0e0;
+}
+
+/* Rest of your CSS remains the same */
+.modal-content.success {
+  border-left: 8px solid #28a745;
+}
+
+.modal-content.success p {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.modal-content.error {
+  border-left: 8px solid #dc3545;
+}
+
+.modal-content.error p {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.modal-dropdown {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.modal-dropdown label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.modal-dropdown select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.modal-notes {
+  margin: 15px 0;
+  text-align: left;
+}
+
+.modal-notes label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.modal-notes textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-height: 80px;
+}
+
+.modal-message {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.modal-close-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-close-button:hover {
+  background-color: #0056b3;
+}
