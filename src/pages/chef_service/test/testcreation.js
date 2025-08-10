@@ -36,7 +36,8 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const navigate = useNavigate();
-      const API_BASE_URL = process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
+  const API_BASE_URL =
+    process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
 
   // Custom hook for test data
   const { initialItems } = useTestData(
@@ -110,7 +111,8 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
     try {
       await axios.put(
         `${API_BASE_URL}/api/tests/variables/${variable.id}`,
-        variable
+        variable,
+        { withCredentials: true }
       );
     } catch (error) {
       console.error("Error updating element in backend:", error);
@@ -200,7 +202,8 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
         if (variable) {
           await axios.put(
             `${API_BASE_URL}/api/tests/variables/${variable.id}`,
-            variable
+            variable,
+            { withCredentials: true }
           );
         }
       } catch (error) {
@@ -222,6 +225,7 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
       const response = await axios.post(
         `${API_BASE_URL}/api/upload/test`,
         formData,
+        { withCredentials: true },
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -259,7 +263,8 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
         formData.append("file", file);
         const uploadResponse = await axios.post(
           `${API_BASE_URL}/api/tests/upload-image`,
-          formData
+          formData,
+          { withCredentials: true }
         );
         const imagePath = uploadResponse.data;
 
@@ -474,7 +479,8 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
       try {
         const response = await axios.post(
           `${API_BASE_URL}/api/tests`,
-          testData
+          testData,
+          { withCredentials: true }
         );
         alert("Test saved successfully!");
         const newId = response.data.id;
@@ -487,7 +493,9 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
     }
 
     try {
-      await axios.put(`${API_BASE_URL}/api/tests/${id}`, testData);
+      await axios.put(`${API_BASE_URL}/api/tests/${id}`, testData, {
+        withCredentials: true,
+      });
 
       alert("Test saved successfully!");
     } catch (error) {
@@ -499,7 +507,8 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
   const checkTestCodeUnique = async (code) => {
     try {
       const response = await axios.get(
-        `${API_BASE_URL}/api/tests/check-code?code=${code}`
+        `${API_BASE_URL}/api/tests/check-code?code=${code}`,
+        { withCredentials: true }
       );
       return response.data;
     } catch (error) {
@@ -1063,7 +1072,7 @@ const TestCreation = ({ id, currentUser, setActiveTab, activeTab }) => {
                         />
                       );
                     case "table":
-                      if (item.side === "main" || item.side === "right" ) {
+                      if (item.side === "main" || item.side === "right") {
                         return (
                           <TableItem
                             key={originalIndex}
