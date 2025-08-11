@@ -28,30 +28,20 @@ const Assign = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const baseRequests = [
+        const [testsRes, operateursRes, esseiRes] = await Promise.all([
           axios.get(`${API_BASE_URL}/api/tests`, { withCredentials: true }),
           axios.get(`${API_BASE_URL}/api/users/role/operateur`, {
             withCredentials: true,
           }),
-        ];
-
-        const allRequests =
-          esseiId && esseiId !== "0"
-            ? [
-                ...baseRequests,
-                axios.get(
-                  `${API_BASE_URL}/api/fichedessai/details/${esseiId}`,
-                  { withCredentials: true }
-                ),
-              ]
-            : baseRequests;
-
-        const [testsRes, operateursRes, esseiRes] = await Promise.all(
-          allRequests
-        );
+          axios.get(`${API_BASE_URL}/api/fichedessai/details/${esseiId}`, {
+            withCredentials: true,
+          }),
+        ]);
+        console.log("testres : " + testsRes.data);
         const uniqueTests = testsRes.data.filter(
           (test) => test.isPrimaryTest === true
         );
+        console.log("uniqueTests : " + uniqueTests);
         setTests(uniqueTests);
         setOperateurs(
           operateursRes.data.filter(
