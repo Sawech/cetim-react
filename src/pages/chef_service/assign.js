@@ -10,6 +10,8 @@ const Assign = () => {
   const [tests, setTests] = useState([]);
   const [operateurs, setOperateurs] = useState([]);
   const currentUser = AuthService.getCurrentUser();
+  const API_BASE_URL =
+    process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
   const [dropdownSets, setDropdownSets] = useState([
     {
       id: 1,
@@ -26,10 +28,11 @@ const Assign = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const API_BASE_URL = process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
         const baseRequests = [
-          axios.get(`${API_BASE_URL}/api/tests`),
-          axios.get(`${API_BASE_URL}/api/users/role/operateur`),
+          axios.get(`${API_BASE_URL}/api/tests`, { withCredentials: true }),
+          axios.get(`${API_BASE_URL}/api/users/role/operateur`, {
+            withCredentials: true,
+          }),
         ];
 
         const allRequests =
@@ -37,7 +40,8 @@ const Assign = () => {
             ? [
                 ...baseRequests,
                 axios.get(
-                  `${API_BASE_URL}/api/fichedessai/details/${esseiId}`
+                  `${API_BASE_URL}/api/fichedessai/details/${esseiId}`,
+                  { withCredentials: true }
                 ),
               ]
             : baseRequests;
@@ -143,7 +147,8 @@ const Assign = () => {
     }
 
     try {
-      const API_BASE_URL = process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
+      const API_BASE_URL =
+        process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
       const response = await axios.get(`${API_BASE_URL}/api/assigns`, {
         withCredentials: true,
       });
@@ -161,9 +166,9 @@ const Assign = () => {
       await Promise.all(
         dropdownSets.map(async (set) => {
           // Get all tests to find the matching one
-          const testsResponse = await axios.get(
-            `${API_BASE_URL}/api/tests`
-          );
+          const testsResponse = await axios.get(`${API_BASE_URL}/api/tests`, {
+            withCredentials: true,
+          });
           const testData = testsResponse.data.find(
             (test) =>
               test.testCode === set.testCode && test.isPrimaryTest === true
@@ -214,12 +219,14 @@ const Assign = () => {
             const subTestPromises =
               testData.subTestIds?.map(async (id) => {
                 const subTestResponse = await axios.get(
-                  `${API_BASE_URL}/api/tests/${id}`
+                  `${API_BASE_URL}/api/tests/${id}`,
+                  { withCredentials: true }
                 );
                 const subTestData = subTestResponse.data;
 
                 const newSubTest = await axios.post(
                   `${API_BASE_URL}/api/tests`,
+                  { withCredentials: true },
                   {
                     service: currentUser.service,
                     testCode: subTestData.testCode,
@@ -228,7 +235,7 @@ const Assign = () => {
                     complexeTest: false,
                     subTestIds: [],
                     elements: prepareElements(subTestData.elements),
-                    variables: prepareVariables(subTestData.variables)
+                    variables: prepareVariables(subTestData.variables),
                   }
                 );
 
@@ -241,6 +248,7 @@ const Assign = () => {
             // 2. Then create the complex test with the new sub-test IDs
             const complexTestResponse = await axios.post(
               `${API_BASE_URL}/api/tests`,
+              { withCredentials: true },
               {
                 service: currentUser.service,
                 testCode: testData.testCode,
@@ -249,7 +257,7 @@ const Assign = () => {
                 complexeTest: true,
                 subTestIds: subTestIds,
                 elements: null,
-                variables: null
+                variables: null,
               }
             );
 
@@ -258,6 +266,7 @@ const Assign = () => {
             // Simple test case
             const simpleTestResponse = await axios.post(
               `${API_BASE_URL}/api/tests`,
+              { withCredentials: true },
               {
                 service: currentUser.service,
                 testCode: testData.testCode,
@@ -266,7 +275,7 @@ const Assign = () => {
                 complexeTest: false,
                 subTestIds: [],
                 elements: prepareElements(testData.elements),
-                variables: prepareVariables(testData.variables)
+                variables: prepareVariables(testData.variables),
               }
             );
 
@@ -276,6 +285,7 @@ const Assign = () => {
           // Create assignment with the new test ID
           return axios.post(
             `${API_BASE_URL}/api/assigns`,
+            { withCredentials: true },
             {
               service: currentUser.service,
               esseiId,
