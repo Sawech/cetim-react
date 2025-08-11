@@ -14,15 +14,16 @@ const ShowAssign = () => {
   const [operateurs, setOperateurs] = useState([]);
   const currentUser = AuthService.getCurrentUser();
   const navigate = useNavigate();
-      const API_BASE_URL = process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
+  const API_BASE_URL =
+    process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
 
   const fetchData = async () => {
     try {
       // 1. Parallelize initial data fetching
       const [assignsRes, testsRes, usersRes] = await Promise.all([
         axios.get(`${API_BASE_URL}/api/assigns`),
-        axios.get(`${API_BASE_URL}080/api/tests`),
-        axios.get(`${API_BASE_URL}080/api/users`),
+        axios.get(`${API_BASE_URL}/api/tests`),
+        axios.get(`${API_BASE_URL}/api/users`),
       ]);
 
       // 2. Filter assigns once
@@ -178,7 +179,6 @@ const ShowAssign = () => {
           variables.forEach((variable) => {
             variableMap.set(variable.name, variable);
           });
-          console.log(assign.dateExec);
           return {
             assignId: assign?.id || null,
             user: user ? `${user.firstName} ${user.lastName}` : "Unknown User",
@@ -447,13 +447,10 @@ const ShowAssign = () => {
         // Send all updates to backend
         await Promise.all(
           updatedGroup.variables.map(async (v) => {
-            await axios.put(
-              `${API_BASE_URL}/api/tests/variables/${v.id}`,
-              {
-                expression: v.expression,
-                computedValue: v.computedValue,
-              }
-            );
+            await axios.put(`${API_BASE_URL}/api/tests/variables/${v.id}`, {
+              expression: v.expression,
+              computedValue: v.computedValue,
+            });
           })
         );
 
@@ -609,7 +606,9 @@ const ShowAssign = () => {
                         key={`${element.id}-${index}`}
                         className="title-item"
                       >
-                        <p style={{ color: "#ff0000", fontWeight: "bold" }}>{element.text}</p>
+                        <p style={{ color: "#ff0000", fontWeight: "bold" }}>
+                          {element.text}
+                        </p>
                       </div>
                     );
                   } else if (element.type === "table") {
