@@ -491,19 +491,6 @@ const ShowAssign = () => {
     }
   };
 
-  const handleRapportcreation = async (testId) => {
-    try {
-      await axios.post(`${API_BASE_URL}/api/fichedessai/Rapportdessai`, {
-        testId,
-        ficheDessaiId: essei?.id,
-      });
-      alert("Rapport d'essai créé avec succès!");
-    } catch (error) {
-      console.error("Erreur lors de la création du rapport d'essai:", error);
-      alert("Erreur lors de la création du rapport d'essai.");
-    }
-  };
-
   return (
     <div className="show-assign-container">
       <Sidebar roles={currentUser ? currentUser.roles : []} />
@@ -515,20 +502,19 @@ const ShowAssign = () => {
               <tr>
                 <th className="yellow-bg">code échantillon</th>
                 <td>
-                  {essei?.ficheDessai?.order?.echantillon?.echantillonCode ||
-                    "Undefined"}
+                  {essei?.order?.echantillon?.echantillonCode || "Undefined"}
                 </td>
                 <th className="yellow-bg">RE</th>
                 <td>
                   {formatRE(
                     essei?.raportFinalRE,
-                    essei?.ficheDessai?.creationDate
+                    essei?.order?.echantillon.date
                   )}
                 </td>
                 <th className="yellow-bg">SO</th>
                 <td>{String(essei?.serviceOrderID || "").padStart(4, "0")}</td>
                 <th className="yellow-bg">Date de réception</th>
-                <td>{formatDateString(essei?.ficheDessai?.creationDate)}</td>
+                <td>{formatDateString(essei?.order?.echantillon.date)}</td>
               </tr>
             </tbody>
           </table>
@@ -654,15 +640,6 @@ const ShowAssign = () => {
                       </option>
                     ))}
                   </select>
-                  <button className="print-button" onClick={handlePrint}>
-                    IMPRIMER FC01
-                  </button>
-                  <button
-                    className="print-button"
-                    onClick={() => handleRapportcreation(group.groupId)}
-                  >
-                    creer un rapport d'essai
-                  </button>
                 </div>
               </div>
             </div>
