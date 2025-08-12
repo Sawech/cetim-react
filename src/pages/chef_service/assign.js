@@ -49,8 +49,8 @@ const Assign = () => {
           )
         );
         if (esseiRes) {
-          if (esseiRes.data.ficheDessai.order.tests?.length > 0) {
-            const allTests = esseiRes.data.ficheDessai.order.tests.map(
+          if (esseiRes.data.order.tests?.length > 0) {
+            const allTests = esseiRes.data.order.tests.map(
               (test, testIndex) => ({
                 id: testIndex,
                 service: currentUser?.service || null,
