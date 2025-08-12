@@ -43,6 +43,7 @@ const ShowAssign = () => {
 
       // 4. Get ficheDessai details if needed (parallelizable)
       const ficheDessaiId = filteredAssigns[0]?.ficheDessaiId;
+      console.log("filteredAssigns :" + filteredAssigns);
       const esseisRes = ficheDessaiId
         ? await axios.get(
             `${API_BASE_URL}/api/fichedessai/details/${ficheDessaiId}`,
@@ -51,6 +52,7 @@ const ShowAssign = () => {
             }
           )
         : { data: {} };
+      console.log("esseisRes.data :" + esseisRes.data);
       setEssei(esseisRes.data || {});
 
       // 5. Process tests and assigns more efficiently
