@@ -14,8 +14,7 @@ const ShowAssign = () => {
   const [operateurs, setOperateurs] = useState([]);
   const currentUser = AuthService.getCurrentUser();
   const navigate = useNavigate();
-  const API_BASE_URL =
-    process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
+  const API_BASE_URL = "https://cetim-spring.onrender.com";
 
   const fetchData = async () => {
     try {
