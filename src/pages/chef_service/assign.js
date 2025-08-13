@@ -37,11 +37,9 @@ const Assign = () => {
             withCredentials: true,
           }),
         ]);
-        console.log("testres : " + testsRes.data);
         const uniqueTests = testsRes.data.filter(
           (test) => test.isPrimaryTest === true
         );
-        console.log("uniqueTests : " + uniqueTests);
         setTests(uniqueTests);
         setOperateurs(
           operateursRes.data.filter(
@@ -137,8 +135,6 @@ const Assign = () => {
     }
 
     try {
-      const API_BASE_URL =
-        process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
       const response = await axios.get(`${API_BASE_URL}/api/assigns`, {
         withCredentials: true,
       });
@@ -171,6 +167,7 @@ const Assign = () => {
 
           // Function to prepare elements
           const prepareElements = (elements) => {
+            if (!elements) return [];
             return (
               elements
                 ?.sort((a, b) => a.position - b.position)
@@ -188,6 +185,7 @@ const Assign = () => {
           };
 
           const prepareVariables = (variables) => {
+            if (!variables) return [];
             return (
               variables
                 ?.map((variable) => ({
@@ -216,7 +214,6 @@ const Assign = () => {
 
                 const newSubTest = await axios.post(
                   `${API_BASE_URL}/api/tests`,
-                  { withCredentials: true },
                   {
                     service: currentUser.service,
                     testCode: subTestData.testCode,
@@ -226,7 +223,8 @@ const Assign = () => {
                     subTestIds: [],
                     elements: prepareElements(subTestData.elements),
                     variables: prepareVariables(subTestData.variables),
-                  }
+                  },
+                  { withCredentials: true }
                 );
 
                 return newSubTest.data.id;
@@ -238,7 +236,6 @@ const Assign = () => {
             // 2. Then create the complex test with the new sub-test IDs
             const complexTestResponse = await axios.post(
               `${API_BASE_URL}/api/tests`,
-              { withCredentials: true },
               {
                 service: currentUser.service,
                 testCode: testData.testCode,
@@ -248,15 +245,25 @@ const Assign = () => {
                 subTestIds: subTestIds,
                 elements: null,
                 variables: null,
-              }
+              },
+              { withCredentials: true }
             );
 
             newTestId = complexTestResponse.data.id;
           } else {
             // Simple test case
+            console.log({
+              service: currentUser.service,
+              testCode: testData.testCode,
+              testName: testData.testName,
+              isPrimaryTest: false,
+              complexeTest: false,
+              subTestIds: [],
+              elements: prepareElements(testData.elements),
+              variables: prepareVariables(testData.variables),
+            });
             const simpleTestResponse = await axios.post(
               `${API_BASE_URL}/api/tests`,
-              { withCredentials: true },
               {
                 service: currentUser.service,
                 testCode: testData.testCode,
@@ -264,9 +271,10 @@ const Assign = () => {
                 isPrimaryTest: false,
                 complexeTest: false,
                 subTestIds: [],
-                elements: prepareElements(testData.elements),
-                variables: prepareVariables(testData.variables),
-              }
+                elements: prepareElements(testData.elements) || [],
+                variables: prepareVariables(testData.variables) || [],
+              },
+              { withCredentials: true }
             );
 
             newTestId = simpleTestResponse.data.id;
@@ -275,7 +283,6 @@ const Assign = () => {
           // Create assignment with the new test ID
           return axios.post(
             `${API_BASE_URL}/api/assigns`,
-            { withCredentials: true },
             {
               service: currentUser.service,
               esseiId,
