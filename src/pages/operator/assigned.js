@@ -14,7 +14,8 @@ const Assigned = () => {
   const [essai, setEssai] = useState([]);
   const [test, setTest] = useState([]);
   const [statusMessage, setStatusMessage] = useState({ text: "", type: "" });
-      const API_BASE_URL = process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
+  const API_BASE_URL =
+    process.env.REACT_APP_API_URL || "https://cetim-spring.onrender.com";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,13 +33,13 @@ const Assigned = () => {
         ]);
 
         // Mark assignment as read after getting initial data
-        await axios.put(`${API_BASE_URL}/api/assigns/read/${assignId}`, {
+        await axios.put(`${API_BASE_URL}/api/assigns/read/${assignId}`, null, {
           withCredentials: true,
         });
 
         // Get additional details if needed
         const detailsRes = await axios.get(
-          `${API_BASE_URL}/api/fichedessai/details/${1}`,
+          `${API_BASE_URL}/api/fichedessai/details/${assignRes.data.ficheDessaiId}`,
           {
             withCredentials: true,
           }
